@@ -1,0 +1,28 @@
+<div id="<%= dom_id store %>">
+<div style="display:inline-flex;">
+<% if store.shoe_image.attached?%>
+<%= image_tag store.shoe_image %>
+<% end%>
+<div style="display:block; padding-top:30px; padding-left:20px;">
+  <p>
+    <strong>Name:</strong>
+    <%= store.name %>
+  </p>
+
+  <p>
+    <strong>Shoe type:</strong>
+    <%= store.shoe_type %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= store.price %>
+  </p>
+
+  <p>
+    <strong>Color:</strong>
+    <%= store.color %>
+  </p>
+  </div>
+  </div>
+</div>

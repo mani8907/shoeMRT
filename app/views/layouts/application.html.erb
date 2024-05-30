@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShoeMrt</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body style="margin-left:30px; margin-right:30px">
+ 
+  <div class="container">
+     <div class="top-header">
+	 <h1 style="font-weight: bold; color: dark-blue; font-size: 60px;padding-left: 10px;">shoeMRT</h1>
+     </div>
+
+	 <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+   <% end %>
+   <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+   <% end %>
+    
+    <p class="navbar-text float-right">
+    
+  </p>
+
+  </div>				
+		<div class="container">
+			<!----top-header---->
+			
+					<div style="padding:0px">
+					<div class="cart-details">
+						<div class="add-to-cart">
+							<ul class="unstyled-list list-inline">
+							<li><span class="cart"> </span>
+									<ul class="cart-sub">
+										<li><p>0 Products</p></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<div class="login-rigister">
+							<ul class="unstyled-list list-inline">
+              <li>
+              <% if session[:admin] %>
+              <a href="/admin/logout">Admin Logout </a>
+              <% else %>
+              <a href="/admin/login">Admin Login </a>
+              <% end %>
+              </li>
+              <li><% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+               <li><%= link_to "Login", new_user_session_path, class: "navbar-link"  %></li>
+              <li><%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %> </li>
+              <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %></li>
+              <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path, class: "navbar-link"  %> </li>
+              <li><%= link_to "Login", new_user_session_path, class: "navbar-link"  %></li>
+								<% end%>
+								
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				
+			</div>
+			</div>
+			<!----//top-header---->
+			<!---top-header-nav---->
+            
+            <div class="s1">
+			<div class="top-header"> 
+			 <div style="margin-left:30px;">
+			  <!---top-header-search-box--->
+			  <%= form_with url: "/gallery/search", method: :get do |form| %>
+				<%= form.label :query, "Search for:" %>
+				<%= form.text_field :keyword %>
+				<%= form.submit "Search" %>
+			  <% end %>
+			  <!---top-header-search-box--->
+				</div>		
+			</div>
+			</div>
+		</div>
+			<div class="s1"
+			  <div  id="top" class="callbacks_container">
+			  <ul class="rslides" id="slider4">
+				<li padding-left="50px">
+			     <%= yield%>
+				  <img src="/assets/slide1.png" alt="">  
+				</li>
+			  </ul>
+			</div>
+			</div>
+			    <div class="clearfix"> </div>
+			<!----- //End-slider---->
+			
+					
+			<!----footer--->
+			<div class="s1">
+			<div class="footer">
+			    
+				<div class="container">
+					<div class="col-md-7 footer-links">
+						<ul class="unstyled-list list-inline">
+							<li><a href="#"> Faq</a> <span> </span></li>
+							<li><a href="#"> Terms and Conditions</a> <span> </span></li>
+							<li><a href="#"> Secure Payments</a> <span> </span></li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="col-md-2 footer-social">
+						<ul class="unstyled-list list-inline">
+							<li><a class="twitter" href="#"><span> </span></a></li>
+							<li><a class="facebook" href="#"><span> </span></a></li>
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			 </div>
+			 <div class="clearfix"> </div>
+			 </div>
+			<!---//footer--->
+			<!---copy-right--->
+					<div class="copy-right">
+						<div class="container">
+							<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+						</div>
+					</div>
+			<!--//copy-right--->
+		</div>
+  </body>
+</html>
+
+
+
+
+
